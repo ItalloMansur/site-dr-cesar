@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dr. Cesar Romero L. Ferreira | CRM 52.0132.138-2/RJ</title>
+  
+  <!-- Fontes Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-color: #f7f4ef;
+      --card-bg: #ffffff;
+      --card-alt: #f4f0ea;
+      --primary: #7a6855;
+      --primary-dark: #5c4d3e;
+      --accent: #d0c4b4;
+      --text-main: #3a3836;
+      --text-muted: #6e6a66;
+      --radius: 12px;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(247, 244, 239, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--accent);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-text {
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: var(--primary-dark);
+    }
+
+    .logo-sub {
+      display: block;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 2.1rem;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+      font-weight: 700;
+    }
+
+    .hero-text p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--card-alt);
+      color: var(--primary-dark);
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      border: 1px solid var(--accent);
+    }
+
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #25d366;
+      color: white;
+      text-decoration: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+      background-color: #20ba5a;
+      transform: translateY(-2px);
+    }
+
+    .doctor-photos-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .main-photo-frame {
+      width: 100%;
+      height: 340px;
+      border-radius: var(--radius);
+      object-fit: cover;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--accent);
+      background-color: #eae3d9;
+    }
+
+    .thumbnails-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.5rem;
+    }
+
+    .thumbnails-grid img {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+      background-color: #eae3d9;
+    }
+
+    .thumbnails-grid img:hover, .thumbnails-grid img.active {
+      border-color: var(--primary);
+      transform: scale(1.03);
+    }
+
+    .about-section {
+      background: var(--card-bg);
+      padding: 4rem 1.5rem;
+      border-top: 1px solid #efebe4;
+      border-bottom: 1px solid #efebe4;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2.5rem;
+    }
+
+    .about-card {
+      background: var(--card-alt);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--accent);
+    }
+
+    .about-card h3 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+
+    .about-list {
+      list-style: none;
+    }
+
+    .about-list li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+    }
+
+    .about-list li::before {
+      content: "•";
+      color: var(--primary);
+      font-weight: bold;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -2px;
+    }
+
+    /* Galeria do Consultório */
+    .office-section {
+      padding: 4rem 1.5rem;
+      background: var(--bg-color);
+    }
+
+    .office-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .office-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      border: 1px solid var(--accent);
+      box-shadow: var(--shadow);
+      transition: transform 0.2s;
+    }
+
+    .office-grid img:hover {
+      transform: translateY(-3px);
+    }
+
+    .conditions-section {
+      padding: 4rem 1.5rem;
+      background: var(--card-bg);
+      border-top: 1px solid #efebe4;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--accent);
+      padding: 1.8rem;
+      border-radius: var(--radius);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.6rem;
+    }
+
+    .card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+    }
+
+    .info-section {
+      background: var(--card-bg);
+      padding: 4rem 1.5rem;
+      border-top: 1px solid #efebe4;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .info-box {
+      background: var(--card-alt);
+      padding: 2rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--accent);
+    }
+
+    .info-box h3 {
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: #2a2725;
+      color: #c5beba;
+      text-align: center;
+      padding: 2.5rem 1.5rem;
+      font-size: 0.85rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero, .about-grid, .info-grid {
+        grid-template-columns: 1fr;
+      }
+      .office-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .main-photo-frame {
+        height: 280px;
+      }
+      nav {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div>
+        <span class="logo-text">Dr. Cesar Romero L. Ferreira</span>
+        <span class="logo-sub">CRM 52.0132.138-2/RJ</span>
+      </div>
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#consultorio">Consultório</a>
+        <a href="#atuacao">Atuação</a>
+        <a href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <span class="badge">Atendimento Presencial e Online</span>
+      <h1>Acolhimento e cuidado especializado para sua saúde</h1>
+      <p>Acompanhamento voltado a adolescentes e adultos com escuta humanizada, ética e sólida formação médica.</p>
+      <a href="https://wa.me/5521983514764" class="btn-whatsapp" target="_blank">
+        Agendar Consulta via WhatsApp
+      </a>
+    </div>
+
+    <div class="doctor-photos-container">
+      <img 
+        src="img/cesar_foto1.jpg" 
+        alt="Dr. Cesar Romero" 
+        class="main-photo-frame" 
+        id="doctor-main-photo" 
+        onerror="handleImgError(this)" 
+      />
+      
+      <div class="thumbnails-grid">
+        <img src="img/cesar_foto1.jpg" alt="Foto 1" class="active" onclick="setMainPhoto(this.src, this)" onerror="handleImgError(this)" />
+        <img src="img/cesar_foto2.jpg" alt="Foto 2" onclick="setMainPhoto(this.src, this)" onerror="handleImgError(this)" />
+        <img src="img/cesar_foto3.jpg" alt="Foto 3" onclick="setMainPhoto(this.src, this)" onerror="handleImgError(this)" />
+        <img src="img/cesar_foto4.jpg" alt="Foto 4" onclick="setMainPhoto(this.src, this)" onerror="handleImgError(this)" />
+        <img src="img/cesar_foto5.jpg" alt="Foto 5" onclick="setMainPhoto(this.src, this)" onerror="handleImgError(this)" />
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="about-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Trajetória Profissional & Formação</h2>
+        <p>Experiência e qualificação contínua voltadas ao cuidado integral do paciente.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card">
+          <h3>Atuação Profissional</h3>
+          <ul class="about-list">
+            <li>Médico Psiquiatra na Prefeitura Municipal do Rio de Janeiro.</li>
+            <li>Médico no Serviço de Atendimento Móvel de Urgência (SAMU) de Magé.</li>
+          </ul>
+        </div>
+
+        <div class="about-card">
+          <h3>Qualificação & Pós-Graduações</h3>
+          <ul class="about-list">
+            <li>Estudou Medicina Legal na Universidade Federal do Rio de Janeiro (UFRJ).</li>
+            <li>Pós-graduado em Psiquiatria.</li>
+            <li>Pós-graduado em Endocrinologia.</li>
+            <li>Pós-graduando pela Universidade Estadual de Alagoas (UNEAL).</li>
+            <li>Mestrando em Direito da Saúde pela Universidade Santa Cecília (UNISANTA).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="consultorio" class="office-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Conheça o Consultório</h2>
+        <p>Um ambiente acolhedor, discreto e preparado para o seu atendimento em Icaraí.</p>
+      </div>
+
+      <div class="office-grid">
+        <img src="img/escritorio1.jpg" alt="Consultório - Foto 1" onerror="handleImgError(this)" />
+        <img src="img/escritorio2.jpg" alt="Consultório - Foto 2" onerror="handleImgError(this)" />
+        <img src="img/escritorio3.jpg" alt="Consultório - Foto 3" onerror="handleImgError(this)" />
+        <img src="img/escritorio4.jpg" alt="Consultório - Foto 4" onerror="handleImgError(this)" />
+      </div>
+    </div>
+  </section>
+
+  <section id="atuacao" class="conditions-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Áreas de Atuação Clínica</h2>
+        <p>Acompanhamento médico estruturado para adolescentes e adultos nas seguintes condições:</p>
+      </div>
+
+      <div class="grid-cards">
+        <div class="card">
+          <h3>Transtornos Depressivos</h3>
+          <p>Quadros caracterizados por alterações persistentes no humor, sensação contínua de desânimo, perda de interesse em atividades rotineiras e fadiga, impactando a funcionalidade interpessoal e profissional.</p>
+        </div>
+
+        <div class="card">
+          <h3>Transtornos de Ansiedade</h3>
+          <p>Condições que envolvem preocupação excessiva, tensão corporal e estado contínuo de alerta, gerando desconfortos físicos e emocionais recorrentes nas rotinas diárias.</p>
+        </div>
+
+        <div class="card">
+          <h3>Transtorno Bipolar</h3>
+          <p>Caracteriza-se pela oscilação entre períodos de elevação de energia ou euforia e episódios de rebaixamento do humor, exigindo estabilização e acompanhamento contínuo.</p>
+        </div>
+
+        <div class="card">
+          <h3>Transtorno Opositor Desafiador (TOD)</h3>
+          <p>Padrão comportamental frequente de desobediência, postura defensiva ou indisposição frente a figuras de autoridade, necessitando de intervenções integradas para manejo comportamental.</p>
+        </div>
+
+        <div class="card">
+          <h3>Esquizofrenia</h3>
+          <p>Condição neurológica e comportamental complexa que altera a percepção da realidade, o raciocínio e o processamento de estímulos, tratada com foco na estabilização dos sintomas.</p>
+        </div>
+
+        <div class="card">
+          <h3>Transtorno do Espectro Autista (TEA)</h3>
+          <p>Neurodivergência identificável por particularidades na comunicação social, linguagem e padrões de interesse, atendido com foco na adaptação e qualidade de vida.</p>
+        </div>
+
+        <div class="card">
+          <h3>Transtornos Adictivos</h3>
+          <p>Condições associadas à dependência de substâncias ou comportamentos compulsivos, focando no suporte gradual, na redução de danos e na reestruturação do bem-estar pessoal.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" class="info-section">
+    <div class="container">
+      <div class="info-grid">
+        <div class="info-box">
+          <h3>Localização do Consultório</h3>
+          <p><strong>Endereço:</strong><br />
+          Rua Gavião Peixoto, 124 — Sala 503<br />
+          Icaraí, Niterói — RJ</p>
+          <br />
+          <p><strong>Modalidades de Atendimento:</strong><br />
+          • Presencial no consultório em Icaraí<br />
+          • Online para diversas regiões</p>
+        </div>
+
+        <div class="info-box" style="background: #ffffff;">
+          <h3>Agendamentos & Dúvidas</h3>
+          <p>Para obter informações sobre horários e agendar sua consulta, entre em contato pelos canais abaixo:</p>
+          <br />
+          <p><strong>WhatsApp:</strong> (21) 98351-4764</p>
+          <p><strong>E-mail:</strong> <a href="mailto:dr.cesar.romero.life@gmail.com" style="color: var(--primary-dark); text-decoration: underline;">dr.cesar.romero.life@gmail.com</a></p>
+          <p><strong>Instagram:</strong> <a href="https://www.instagram.com/cesarromerol07?utm_source=qr&igsi=cTc2a2R3dmM3NDBk" target="_blank" rel="noopener noreferrer" style="color: var(--primary-dark); text-decoration: underline;">@cesarromerol07</a></p>
+          <br />
+          <a href="https://wa.me/5521983514764" class="btn-whatsapp" target="_blank" style="width: 100%;">
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Dr. Cesar Romero L. Ferreira</strong> | CRM 52.0132.138-2/RJ</p>
+    <p>Rua Gavião Peixoto 124, Sala 503, Icaraí, Niterói - RJ</p>
+    <p style="margin-top: 0.8rem; font-size: 0.75rem; color: #a39b95;">cesarromerodr.com.br — Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function setMainPhoto(src, element) {
+      document.getElementById('doctor-main-photo').src = src;
+      const thumbnails = document.querySelectorAll('.thumbnails-grid img');
+      thumbnails.forEach(img => img.classList.remove('active'));
+      element.classList.add('active');
+    }
+
+    function handleImgError(img) {
+      if (!img.dataset.tried) {
+        img.dataset.tried = 'png';
+        img.src = img.src.replace(/\.jpg$/, '.png');
+      } else if (img.dataset.tried === 'png') {
+        img.dataset.tried = 'jpeg';
+        img.src = img.src.replace(/\.png$/, '.jpeg');
+      }
+    }
+  </script>
+</body>
+</html> 
